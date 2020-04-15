@@ -191,7 +191,7 @@ export default {
           this.$emit("blur", this.$refs.content);
         },
 
-        onPaste(e) {
+        onPasteForcePlainText(e) {
             e.preventDefault();
 
              // get a plain representation of the clipboard
@@ -201,9 +201,24 @@ export default {
             document.execCommand("insertHTML", false, text);
         },
 
+        onPasteStripTags(e) {
+            e.preventDefault();
+
+            // get a plain representation of the clipboard
+            var text = e.clipboardData.getData("text/html");
+
+            // insert that plain text text manually
+            document.execCommand("insertHTML", false, this.stripTags(text));
+        },
+
         syncHTML () {
             if (this.html !== this.$refs.content.innerHTML)
                 this.innerHTML = this.html;
+        },
+
+        stripTags(text) {
+          var allowed = this.mergedOptions.allowedTags || ['-'];
+          return text.replace(new RegExp("<(?!/?(" + allowed.join('|') + "))\\w*[^<>]*>", "gi"), '').replace(new RegExp("(<" + allowed.join('|') + ")[^<>]*", "gi"), "$1");
         }
     },
 
@@ -217,9 +232,11 @@ export default {
         this.$refs.content.addEventListener("blur", this.onContentBlur, { capture: true });
 
         if (this.mergedOptions.forcePlainTextOnPaste === true) {
-            this.$refs.content.addEventListener("paste", this.onPaste);
+            this.$refs.content.addEventListener("paste", this.onPasteForcePlainText);
+        } else if (this.mergedOptions.stripTagsOnPaste === true) {
+            this.$refs.content.addEventListener("paste", this.onPasteStripTags);
         }
-        
+
         this.$refs.content.style.maxHeight = this.mergedOptions.maxHeight;
     },
 

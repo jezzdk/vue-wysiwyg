@@ -59,6 +59,12 @@ All keys are optional.
   // set to 'true' this will insert plain text without styling when you paste something into the editor.
   forcePlainTextOnPaste: true,
 
+  // set to 'true' this will strip tags when you paste something into the editor (ignored if forcePlainTextOnPaste = true).
+  stripTagsOnPaste: true,
+
+  // If stripTagsOnPaste = true then use this option to allow tags (attributes will still be stripped)
+  allowedTags: [],
+
   // specify editor locale, if you don't specify this, the editor will default to english.
   locale: 'hu'
 }
