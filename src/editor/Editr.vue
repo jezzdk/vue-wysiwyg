@@ -218,7 +218,7 @@ export default {
 
         stripTags(text) {
           var allowed = this.mergedOptions.allowedTags || ['-'];
-          return text.replace(new RegExp("<(?!/?(" + allowed.join('|') + "))\\w*[^<>]*>", "gi"), '').replace(new RegExp("(<" + allowed.join('|') + ")[^<>]*", "gi"), "$1");
+          return text.replace(new RegExp("<(?!/?(" + allowed.join('|') + "))\\w*[^<>]*>", "gi"), '').replace(new RegExp("(<(" + allowed.join('|') + "))[^<>]*", "gi"), "$1");
         }
     },
 

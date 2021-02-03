@@ -1,24 +1,25 @@
-[![](https://user-images.githubusercontent.com/11352152/30252159-1bbb9cfe-963b-11e7-966c-b44116c74a86.png)](https://chmln.github.io/vue-wysiwyg/)
+This is a fork of [chmln/vue-wysiwyg](https://github.com/chmln/vue-wysiwyg) that solves some issues I was having with copy paste.
 
+[![](https://user-images.githubusercontent.com/11352152/30252159-1bbb9cfe-963b-11e7-966c-b44116c74a86.png)](https://chmln.github.io/vue-wysiwyg/)
 
 ## Usage
 
 
-### Install vue-wysiwyg
+### Install vue-wysiwyg-fixed
 
 ``` bash
-npm install vue-wysiwyg --save
+npm install vue-wysiwyg-fixed --save
 ```
 OR
 
 ``` bash
-yarn add vue-wysiwyg
+yarn add vue-wysiwyg-fixed
 ```
 
 In your `main.js`:
 
 ```js
-import wysiwyg from "vue-wysiwyg";
+import wysiwyg from "vue-wysiwyg-fixed";
 Vue.use(wysiwyg, {}); // config is optional. more below
 ```
 
@@ -26,7 +27,7 @@ Also make sure to load the stylesheet.
 The exact syntax will depend on what preprocessor you use.
 
 ```css
-@import "~vue-wysiwyg/dist/vueWysiwyg.css";
+@import "~vue-wysiwyg-fixed/dist/vueWysiwyg.css";
 ```
 
 In your components:
